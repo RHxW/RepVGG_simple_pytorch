@@ -99,6 +99,8 @@ def block_reparameterize(train_block):
     out_c = train_block.conv.out_channels
     new_conv = nn.Conv2d(in_c, out_c, train_block.conv.kernel_size, stride=train_block.conv.stride,
                          padding=train_block.conv.padding)
+    new_conv.weight.data *= 0
+    new_conv.bias.data *= 0
 
     # 1. convert conv layers
     conv = train_block.conv

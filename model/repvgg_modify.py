@@ -117,7 +117,12 @@ if __name__ == "__main__":
     # torch.save(model.state_dict(),'1.pth')
     # torch.save(model_i.state_dict(),'2.pth')
     model_i.load_from_train_model(model)
+    model_i.eval()
+    stage1 = model.net.stage_1
+    stage11 = model_i.net.stage_1
+    stage1.eval()
+    stage11.eval()
     # torch.save(model_i.state_dict(),'3.pth')
-    a = torch.ones([1, 3, 368, 368])
+    a = torch.ones([1, 3, 16, 16])
     b = model(a)
     print(b.shape)
